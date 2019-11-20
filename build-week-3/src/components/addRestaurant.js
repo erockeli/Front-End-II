@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const restaurantList = ({ addRestaurant }) => {
+const RestaurantList = ({ addRestaurant }) => {
 const [restaurant, setRestaurant] = useState(
 {name:"", 
 street:"", 
@@ -33,4 +33,4 @@ const handleSubmit = event => {
         );
         };
         
-        export default FriendList; 
+        export default RestaurantList; 

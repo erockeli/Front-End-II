@@ -8,7 +8,7 @@ const Restaurant = (props) => {
     const [restaurantList, setRestaurantList] = useState([])
 
     useEffect (() => {
-        axiosWithAuth().get('http://localhost:3000/api/restaurants')
+        axiosWithAuth().get(`http://localhost:3000/api/restaurants`)
     .then(res => {setRestaurantList(res.data);
     })
         .catch(err => console.log(err.response));
@@ -16,7 +16,7 @@ const Restaurant = (props) => {
 
 
     const addRestaurant = restaurant => {
-        axiosWithAuth().post('http://localhost:5000/api/friends', restaurant)
+        axiosWithAuth().post(`http://localhost:4400/api/restaurants`, restaurant)
         .then(res => setRestaurantList(res.data))
         .catch(err => console.log(err.response));
     }
@@ -25,6 +25,7 @@ const Restaurant = (props) => {
         <div>
             <h1>Restaurants</h1>
             <AddRestaurant addRestaurant={addRestaurant} />
+            {restaurantList.map}
         </div>
     )
 }

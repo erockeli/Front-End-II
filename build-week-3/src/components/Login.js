@@ -13,7 +13,7 @@ const Login = (props) =>{
     const handleSubmit = event => {
 
         event.preventDefault()
-        axios.post(`http://localhost:3000/api/login`, user)
+        axios.post(`http://localhost:4400/api/auth/login`, user)
         .then(res => {
             console.log(res)
             localStorage.setItem("token", res.data.payload)
@@ -24,6 +24,8 @@ const Login = (props) =>{
 
     return(
         <form onSubmit ={handleSubmit}>
+
+
             <input type="text" 
             name="username" 
             placeholder= "username" 
@@ -35,9 +37,8 @@ const Login = (props) =>{
             placeholder="password"
             onChange={handleChange}
             value={user.password}/>
-
-
-            <button type="submit">Login In</button>
+  
+            <button type="submit">Register</button>
             
             
         </form>
