@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const Login = (props) =>{
 
-    const [user, setUser] = useState ({username:"" , password: ""})
+    const [user, setUser] = useState ({email:"" , password: ""})
 
     const handleChange = event =>{
 
@@ -13,11 +13,11 @@ const Login = (props) =>{
     const handleSubmit = event => {
 
         event.preventDefault()
-        axios.post(`http://localhost:4400/api/auth/login`, user)
+        axios.post(`https://restaurantpassports.herokuapp.com/api/auth/login`, user)
         .then(res => {
             console.log(res)
             localStorage.setItem("token", res.data.payload)
-            props.history.push("/restaurants")
+            // props.history.push("/restaurants")
         })
         .catch(err => console.log (err.response))
     }
@@ -27,10 +27,10 @@ const Login = (props) =>{
 
 
             <input type="text" 
-            name="username" 
-            placeholder= "username" 
+            name="email" 
+            placeholder= "email" 
             onChange={handleChange}
-            value= {user.username}/>
+            value= {user.email}/>
 
             <input type="password" 
             name="password" 
@@ -38,7 +38,7 @@ const Login = (props) =>{
             onChange={handleChange}
             value={user.password}/>
   
-            <button type="submit">Register</button>
+            <button type="submit">Login</button>
             
             
         </form>

@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import Login from "./components/Login"
+import Register from "./components/Register"
 import Restaurant from './components/restaurants'
-import { Route, Link, Redirect } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 
 
 const ProtectedRoute = ({component: Component, ...rest}) => {
@@ -20,8 +21,9 @@ function App() {
   return (
     <div className="App">
       <Route path="/login" component={Login}/>
+      <Route path="/register" component={Register}/>
       <ProtectedRoute path="/restaurants" component={Restaurant}/>
-      <Login/>
+      
       
     
     </div>

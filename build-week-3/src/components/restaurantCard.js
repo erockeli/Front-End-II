@@ -1,17 +1,15 @@
 import React from 'react'
-import RestaurantForm from './addRestaurant'
-import Restaurant from './restaurants'
 import { Link } from 'react-router-dom'
 
 
 
-const RestaurantCard = (props) =>{
+const RestaurantCard = ({restaurant, deleterestaurant}) =>{
 
     return(
 <div>
-    {RestaurantForm.name}
-    <button onClick={() => Restaurant.deleteRestaurant(Restaurant.id)}>Delete</button>
-    <Link to={`/restaurant/edit/${Restaurant.id}`}>Edit</Link>
+    {restaurant.name}
+    <button onClick={() => deleterestaurant(restaurant.id)}>Delete</button>
+    <Link to={`/restaurant/edit/${restaurant.id}`}>Edit</Link>
 </div>
 
     )

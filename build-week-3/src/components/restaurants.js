@@ -9,7 +9,7 @@ const Restaurant = (props) => {
     const [restaurantList, setRestaurantList] = useState([])
 
     useEffect (() => {
-        axiosWithAuth().get(`http://localhost:3000/api/restaurants`)
+        axiosWithAuth().get(` https://restaurant-review-api.herokuapp.com/api/v1/restaurants`)
     .then(res => {setRestaurantList(res.data);
     })
         .catch(err => console.log(err.response));
@@ -23,7 +23,7 @@ const Restaurant = (props) => {
     }
 
     const editRestaurant = restaurant => {
-        axiosWithAuth().put(`http://localhost:4400/api/restaurant/${restaurant.id}`, restaurant)
+        axiosWithAuth().put(`http://localhost:4400/api/restaurants/${restaurant.id}`, restaurant)
             .then(res =>{
                 setRestaurantList(res.data)
                 props.history.push("/restaurants")
@@ -33,7 +33,7 @@ const Restaurant = (props) => {
 
     const deleteRestaurant = id => {
         console.log(id)
-        axiosWithAuth().delete(`http://localhost:5000/api/restaurant/${id}`)
+        axiosWithAuth().delete(`http://localhost:5000/api/restaurants/${id}`)
         .then(res => setRestaurantList(res.data))
             .catch(err => console.log(err.response))
     }
@@ -41,21 +41,21 @@ const Restaurant = (props) => {
     return(
         <div>
             <h1>Restaurants</h1>
-            <Route exact path= "/restaurant" render ={props =><ListRestaurant {...props} 
-            submitRestaurant={addRestaurant}/>}/>
+            <Route exact path= "/restaurants" render ={props =><ListRestaurant {...props} 
+            addRestaurant={addRestaurant}/>}/>
             
             {restaurantList.map(restaurant => {
 
                 return <RestaurantCard key={restaurant.id} 
                         restaurant={restaurant} 
-                        delete={deleteRestaurant}/>
+                        deleterestaurant={deleteRestaurant}/>
             })}
-            <Route exact path= "/restaurant/edit/:id" render ={props =>{
+            <Route exact path= "/restaurants/edit/:id" render ={props =>{
 
                 const currentRest= restaurantList.find(restaurant => 
                     restaurant.id == props.match.params.id)
                     if(!currentRest) {
-                        return <Redirect to="friends"/>
+                        return <Redirect to="restaurants"/>
                     }
             return <ListRestaurant {...props} 
             submitRestaurant={editRestaurant} 

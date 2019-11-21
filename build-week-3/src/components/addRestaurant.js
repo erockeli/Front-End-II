@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const RestaurantList = ({ addRestaurant }) => {
-const [restaurant, setRestaurant] = useState(
+const RestaurantList = ({ addRestaurant, initalvalues }) => {
+const [restaurant, setRestaurant] = useState( initalvalues ||
 {name:"", 
 street:"", 
 city:"", 
@@ -10,6 +10,7 @@ website: "",
 notes: ""
 
 });
+
 const handleChange = event => {
     setRestaurant({...restaurant, [event.target.name]: event.target.value});
 };

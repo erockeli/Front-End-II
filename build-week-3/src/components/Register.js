@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 
-const Login = (props) =>{
+const Register = (props) =>{
 
     const [user, setUser] = useState ({username:"" , password: "", email: "",
 full_name:"", city: ""})
@@ -14,7 +14,7 @@ full_name:"", city: ""})
     const handleSubmit = event => {
 
         event.preventDefault()
-        axios.post(`http://localhost:4400/api/auth/register`, user)
+        axios.post(`https://restaurantpassports.herokuapp.com/api/auth/registration`, user)
         .then(res => {
             console.log(res)
             localStorage.setItem("token", res.data.payload)
