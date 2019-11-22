@@ -17,13 +17,13 @@ const Restaurant = (props) => {
 
 
     const addRestaurant = restaurant => {
-        axiosWithAuth().post(`http://localhost:4400/api/restaurants`, restaurant)
+        axiosWithAuth().post(`https://restaurant-review-api.herokuapp.com/api/v1/restaurants`, restaurant)
         .then(res => setRestaurantList(res.data))
         .catch(err => console.log(err.response));
     }
 
     const editRestaurant = restaurant => {
-        axiosWithAuth().put(`http://localhost:4400/api/restaurants/${restaurant.id}`, restaurant)
+        axiosWithAuth().put(`https://restaurant-review-api.herokuapp.com/api/v1/restaurants/${restaurant.id}`, restaurant)
             .then(res =>{
                 setRestaurantList(res.data)
                 props.history.push("/restaurants")
@@ -37,12 +37,13 @@ const Restaurant = (props) => {
         .then(res => setRestaurantList(res.data))
             .catch(err => console.log(err.response))
     }
-
+console.log(addRestaurant)
+const test = "hello"
     return(
         <div>
             <h1>Restaurants</h1>
             <Route exact path= "/restaurants" render ={props =><ListRestaurant {...props} 
-            addRestaurant={addRestaurant}/>}/>
+            submitRestaurant={addRestaurant} test={test}/>}/>
             
             {restaurantList.map(restaurant => {
 

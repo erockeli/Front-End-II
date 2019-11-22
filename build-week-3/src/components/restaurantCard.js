@@ -9,7 +9,7 @@ const RestaurantCard = ({restaurant, deleterestaurant}) =>{
 <div>
     {restaurant.name}
     <button onClick={() => deleterestaurant(restaurant.id)}>Delete</button>
-    <Link to={`/restaurant/edit/${restaurant.id}`}>Edit</Link>
+    <Link to={`/restaurants/edit/${restaurant.id}`}>Edit</Link>
 </div>
 
     )

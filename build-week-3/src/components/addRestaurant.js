@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const RestaurantList = ({ addRestaurant, initalvalues }) => {
-const [restaurant, setRestaurant] = useState( initalvalues ||
+const RestaurantList = (props) => {
+const [restaurant, setRestaurant] = useState( props.initalvalues ||
 {name:"", 
 street:"", 
 city:"", 
@@ -10,14 +10,14 @@ website: "",
 notes: ""
 
 });
-
+console.log(props)
 const handleChange = event => {
     setRestaurant({...restaurant, [event.target.name]: event.target.value});
 };
 
 const handleSubmit = event => {
     event.preventDefault();
-    addRestaurant(restaurant);
+    props.submitRestaurant(restaurant);
     };
     
 
